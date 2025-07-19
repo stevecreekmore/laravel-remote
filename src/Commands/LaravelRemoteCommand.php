@@ -13,6 +13,7 @@ class LaravelRemoteCommand extends Command
 
     public function handle(): void
     {
+        dd('executing');
         ssh::create('user', 'example.com')
             ->onOutput(function ($type, $line) {
                 echo $line;
