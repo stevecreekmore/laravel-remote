@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace stevecreekmore\LaravelRemote;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use VendorName\Skeleton\Commands\SkeletonCommand;
+use stevecreekmore\LaravelRemote\Commands\LaravelRemoteCommand;
 
-class SkeletonServiceProvider extends PackageServiceProvider
+class LaravelRemoteServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
@@ -16,10 +16,10 @@ class SkeletonServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('skeleton')
+            ->name('laravel-remote')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_migration_table_name_table')
-            ->hasCommand(SkeletonCommand::class);
+            ->hasMigration('create_laravel_remote_table')
+            ->hasCommand(LaravelRemoteCommand::class);
     }
 }
