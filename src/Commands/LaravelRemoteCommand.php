@@ -3,17 +3,30 @@
 namespace stevecreekmore\LaravelRemote\Commands;
 
 use Illuminate\Console\Command;
+use Spatie\Ssh\Ssh;
 
 class LaravelRemoteCommand extends Command
 {
-    public $signature = 'laravel-remote';
+    public $signature = 'remote {command}';
 
-    public $description = 'My command';
+    public $description = 'Execute Commands on a remote server';
 
-    public function handle(): int
+    public function handle()
     {
-        $this->comment('All done');
+        ssh::create('user', 'example.com')
+            ->onOutput(function ($type, $line) {
+                echo $line;
+            })->execute($this->getCommandToExecute());
+    }
+    private function getCommandToExecute(): string
+    {
+        $command = $this->argument('command');
 
-        return self::SUCCESS;
+        if (empty($command)) {
+            $this->error('No command provided.');
+            return '';
+        }
+
+        return $command;
     }
 }
