@@ -19,12 +19,14 @@ class LaravelRemoteCommand extends Command
                 echo $line;
             })->execute($this->getCommandToExecute());
     }
+
     private function getCommandToExecute(): string
     {
         $command = $this->argument('command');
 
         if (empty($command)) {
             $this->error('No command provided.');
+
             return '';
         }
 
