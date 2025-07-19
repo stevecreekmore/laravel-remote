@@ -11,7 +11,7 @@ class LaravelRemoteCommand extends Command
 
     public $description = 'Execute Commands on a remote server';
 
-    public function handle()
+    public function handle(): void
     {
         ssh::create('user', 'example.com')
             ->onOutput(function ($type, $line) {
