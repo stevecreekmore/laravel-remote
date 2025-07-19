@@ -13,13 +13,14 @@ class LaravelRemoteCommand extends Command
 
     public function handle()
     {
+        $hostConfig = config('remote.hosts.default');
         ssh::create('user', 'example.com')
             ->onOutput(function ($type, $line) {
                 echo $line;
             })->execute($this->getCommandToExecute());
     }
 
-    private function getCommandToExecute(): string
+    private function getCommandToExecute(Host Config $hostConfig): array
     {
         return  $this->argument('myCommand');
     }

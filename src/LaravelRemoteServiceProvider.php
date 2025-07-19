@@ -1,10 +1,10 @@
 <?php
 
-namespace stevecreekmore\LaravelRemote;
+namespace stevecreekmore\Remote;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use stevecreekmore\LaravelRemote\Commands\LaravelRemoteCommand;
+use stevecreekmore\Remote\Commands\RemoteCommand;
 
 class LaravelRemoteServiceProvider extends PackageServiceProvider
 {
@@ -13,6 +13,6 @@ class LaravelRemoteServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-remote')
             ->hasConfigFile()
-            ->hasCommand(LaravelRemoteCommand::class);
+            ->hasCommand(RemoteCommand::class);
     }
 }
