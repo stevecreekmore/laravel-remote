@@ -21,6 +21,6 @@ class LaravelRemoteCommand extends Command
 
     private function getCommandToExecute(): string
     {
-        return  $this->argument('myCommand');
+        return $this->argument('myCommand');
     }
 }
